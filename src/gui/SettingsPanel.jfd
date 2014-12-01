@@ -1,0 +1,73 @@
+JFDML JFormDesigner: "5.2.0.3.124" Java: "1.7.0_07" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
+			"axis": 1
+		} ) {
+			name: "this"
+			"preferredSize": new java.awt.Dimension( 654, 532 )
+			"minimumSize": new java.awt.Dimension( 654, 532 )
+			"maximumSize": new java.awt.Dimension( 654, 532 )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "Settings"
+				"font": new java.awt.Font( "Tahoma", 1, 14 )
+				"alignmentX": 0.5f
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+				name: "panel1"
+				"maximumSize": new java.awt.Dimension( 654, 30 )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label2"
+					"text": "Reset Balance"
+					"font": new java.awt.Font( "Tahoma", 3, 12 )
+					"preferredSize": new java.awt.Dimension( 90, 15 )
+					"alignmentX": 0.5f
+				} )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+				name: "panel4"
+				"componentOrientation": sfield java.awt.ComponentOrientation LEFT_TO_RIGHT
+				"border": new javax.swing.border.EmptyBorder( 20, 0, 0, 0 )
+				"maximumSize": new java.awt.Dimension( 654, 30 )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label4"
+					"text": "Current Balance"
+					"minimumSize": &Dimension0 new java.awt.Dimension( 48, 14 )
+					"preferredSize": &Dimension1 new java.awt.Dimension( 86, 14 )
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "textUserSignin2"
+					"text": "Enter Amount"
+				} )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+				name: "panel5"
+				"componentOrientation": sfield java.awt.ComponentOrientation LEFT_TO_RIGHT
+				"border": new javax.swing.border.EmptyBorder( 20, 0, 200, 0 )
+				"maximumSize": new java.awt.Dimension( 654, 32000 )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label5"
+					"text": "Account"
+					"minimumSize": #Dimension0
+					"preferredSize": #Dimension1
+					"alignmentX": 0.5f
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "textUserSignin3"
+					"text": "Enter Account"
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button1"
+				"text": "Save"
+				"alignmentX": 0.5f
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 15 )
+			"size": new java.awt.Dimension( 655, 530 )
+		} )
+	}
+}

@@ -1,0 +1,98 @@
+JFDML JFormDesigner: "5.2.0.3.124" Java: "1.7.0_07" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.GridBagLayout ) {
+			"$columnSpecs": "654, 139"
+			"$rowSpecs": "59, 532"
+			"$hGap": 5
+			"$vGap": 5
+			"$alignLeft": true
+			"$alignTop": true
+		} ) {
+			name: "this"
+			"defaultCloseOperation": 3
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+				"alignment": 0
+			} ) {
+				name: "panel1"
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "btnAccount"
+					"text": "Account"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "AccountButtonPressed", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "btnDashboard"
+					"text": "Dashboard"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "DashboardButtonPressed", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "btnAddTransaction"
+					"text": "Add Transaction"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "AddTransactionButtonPressed", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "btnReports"
+					"text": "Reports"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "ReportsButtonPressed", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "btnEvents"
+					"text": "Events"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "EventsButtonPressed", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "btnFriends"
+					"text": "Friends"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "FriendsButtonPressed", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "btnSettings"
+					"text": "Settings"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "SettingsButonPressed", true ) )
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+				"vAlign": 0
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "Logo"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+				"gridx": 1
+				"hAlign": 0
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
+				"axis": 1
+			} ) {
+				name: "panel2"
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "Friend List"
+					"font": new java.awt.Font( "Tahoma", 3, 18 )
+				} )
+				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+					name: "scrollPane1"
+					add( new FormComponent( "javax.swing.JList" ) {
+						name: "list1"
+						"preferredSize": new java.awt.Dimension( 31, 300 )
+						"minimumSize": new java.awt.Dimension( 31, 300 )
+						"maximumSize": new java.awt.Dimension( 31, 300 )
+						"visibleRowCount": 30
+					} )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button9"
+					"text": "Invite More Friends"
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+				"gridx": 1
+				"gridy": 1
+				"hAlign": 0
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 800, 600 )
+		} )
+	}
+}

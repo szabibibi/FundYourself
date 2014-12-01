@@ -1,0 +1,35 @@
+JFDML JFormDesigner: "5.2.0.3.124" Java: "1.7.0_07" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
+			"rows": 2
+		} ) {
+			name: "this"
+			"preferredSize": new java.awt.Dimension( 654, 532 )
+			"minimumSize": new java.awt.Dimension( 654, 532 )
+			"maximumSize": new java.awt.Dimension( 654, 532 )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
+				"columns": 2
+			} ) {
+				name: "panel1"
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "<Expenses PieChart>"
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label2"
+					"text": "<Account List>"
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": "Transactions"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 650, 530 )
+		} )
+	}
+}

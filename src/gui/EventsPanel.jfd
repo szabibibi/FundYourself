@@ -1,0 +1,188 @@
+JFDML JFormDesigner: "5.2.0.3.124" Java: "1.7.0_07" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
+			"rows": 2
+		} ) {
+			name: "this"
+			"preferredSize": new java.awt.Dimension( 654, 532 )
+			"minimumSize": new java.awt.Dimension( 654, 532 )
+			"maximumSize": new java.awt.Dimension( 654, 532 )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JTable" ) {
+					name: "table1"
+					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+						add( new java.util.Vector {
+							add( "" )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+					}, new java.util.Vector {
+						add( "Name" )
+						add( "Description" )
+						add( "Where" )
+						add( "When" )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					} )
+				} )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
+				"axis": 1
+			} ) {
+				name: "panel1"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+					"alignment": 0
+				} ) {
+					name: "panel5"
+					"minimumSize": new java.awt.Dimension( 654, 30 )
+					"preferredSize": new java.awt.Dimension( 654, 30 )
+					"maximumSize": new java.awt.Dimension( 654, 30 )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label2"
+						"text": "Event Name"
+						"preferredSize": &Dimension0 new java.awt.Dimension( 90, 14 )
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textName"
+						"text": "Enter Name"
+						"preferredSize": &Dimension1 new java.awt.Dimension( 100, 20 )
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+					"alignment": 0
+				} ) {
+					name: "panel6"
+					"minimumSize": new java.awt.Dimension( 654, 30 )
+					"preferredSize": new java.awt.Dimension( 654, 30 )
+					"maximumSize": new java.awt.Dimension( 654, 30 )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label3"
+						"text": "Description"
+						"preferredSize": #Dimension0
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textDescription"
+						"text": "Enter Description"
+						"preferredSize": #Dimension1
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+					"alignment": 0
+				} ) {
+					name: "panel7"
+					"minimumSize": new java.awt.Dimension( 654, 30 )
+					"preferredSize": new java.awt.Dimension( 654, 30 )
+					"maximumSize": new java.awt.Dimension( 654, 30 )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label4"
+						"text": "Location"
+						"preferredSize": #Dimension0
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textLocation"
+						"text": "Enter Location"
+						"preferredSize": #Dimension1
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+					"alignment": 0
+				} ) {
+					name: "panel8"
+					"minimumSize": new java.awt.Dimension( 654, 30 )
+					"preferredSize": new java.awt.Dimension( 654, 30 )
+					"maximumSize": new java.awt.Dimension( 654, 30 )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label5"
+						"text": "Date"
+						"preferredSize": #Dimension0
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textDate"
+						"text": "Enter Date"
+						"preferredSize": #Dimension1
+					} )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "btnCreateEvent"
+					"text": "Create Event"
+					"alignmentX": 0.5f
+				} )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 650, 530 )
+		} )
+	}
+}

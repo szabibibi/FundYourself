@@ -1,0 +1,50 @@
+JFDML JFormDesigner: "5.2.0.3.124" Java: "1.7.0_07" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
+			"axis": 1
+		} ) {
+			name: "this"
+			"border": new javax.swing.border.EmptyBorder( 0, 0, 150, 0 )
+			"componentOrientation": sfield java.awt.ComponentOrientation LEFT_TO_RIGHT
+			"maximumSize": new java.awt.Dimension( 654, 532 )
+			"minimumSize": new java.awt.Dimension( 654, 532 )
+			"preferredSize": new java.awt.Dimension( 654, 532 )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "Add Friend"
+				"font": new java.awt.Font( "Tahoma", 1, 14 )
+				"alignmentX": 0.5f
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+				name: "panel4"
+				"componentOrientation": sfield java.awt.ComponentOrientation LEFT_TO_RIGHT
+				"border": new javax.swing.border.EmptyBorder( 20, 0, 0, 0 )
+				"maximumSize": new java.awt.Dimension( 654, 70 )
+				"minimumSize": new java.awt.Dimension( 654, 70 )
+				"preferredSize": new java.awt.Dimension( 654, 70 )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label4"
+					"text": "Username"
+					"minimumSize": new java.awt.Dimension( 48, 14 )
+					"preferredSize": new java.awt.Dimension( 86, 14 )
+					"alignmentX": 0.5f
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "textUserSignin2"
+					"text": "Enter Username"
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button1"
+				"text": "Add Friend"
+				"alignmentX": 0.5f
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 650, 530 )
+		} )
+	}
+}

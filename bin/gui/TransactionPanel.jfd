@@ -1,0 +1,158 @@
+JFDML JFormDesigner: "5.2.0.3.124" Java: "1.7.0_07" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
+			"axis": 1
+		} ) {
+			name: "this"
+			"maximumSize": new java.awt.Dimension( 654, 532 )
+			"minimumSize": new java.awt.Dimension( 654, 532 )
+			"preferredSize": new java.awt.Dimension( 654, 532 )
+			"componentOrientation": sfield java.awt.ComponentOrientation LEFT_TO_RIGHT
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "Add Transaction"
+				"font": new java.awt.Font( "Tahoma", 1, 14 )
+				"alignmentX": 0.5f
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
+				"columns": 2
+			} ) {
+				name: "panel1"
+				"maximumSize": new java.awt.Dimension( 654, 300 )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
+					"axis": 1
+				} ) {
+					name: "panel2"
+					"border": new javax.swing.border.EmptyBorder( 50, 25, 5, 5 )
+					"alignmentX": 0.0f
+					add( new FormComponent( "javax.swing.JRadioButton" ) {
+						name: "radioExpense"
+						"text": "Expense"
+						"$buttonGroup": new FormReference( "typeGroup" )
+					} )
+					add( new FormComponent( "javax.swing.JRadioButton" ) {
+						name: "radioIncome"
+						"text": "Income"
+						"$buttonGroup": new FormReference( "typeGroup" )
+					} )
+					add( new FormComponent( "javax.swing.JRadioButton" ) {
+						name: "radioTransaction"
+						"text": "Transaction"
+						"$buttonGroup": new FormReference( "typeGroup" )
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
+					"axis": 1
+				} ) {
+					name: "panel3"
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
+						"axis": 1
+					} ) {
+						name: "panel4"
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+						"alignment": 0
+					} ) {
+						name: "panel5"
+						"minimumSize": new java.awt.Dimension( 39, 14 )
+						"preferredSize": new java.awt.Dimension( 158, 14 )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label2"
+							"text": "Tag"
+							"preferredSize": new java.awt.Dimension( 90, 14 )
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "textTag"
+							"text": "Enter Tag"
+							"preferredSize": new java.awt.Dimension( 100, 20 )
+						} )
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+						"alignment": 0
+					} ) {
+						name: "panel6"
+						"preferredSize": new java.awt.Dimension( 177, 14 )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label3"
+							"text": "Amount"
+							"preferredSize": new java.awt.Dimension( 90, 14 )
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "textAmount"
+							"text": "Enter Amount"
+							"preferredSize": new java.awt.Dimension( 100, 20 )
+						} )
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+						"alignment": 0
+					} ) {
+						name: "panel7"
+						"preferredSize": new java.awt.Dimension( 163, 14 )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label4"
+							"text": "Date"
+							"preferredSize": new java.awt.Dimension( 90, 14 )
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "textDate"
+							"text": "Enter Date"
+							"preferredSize": new java.awt.Dimension( 100, 20 )
+						} )
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+						"alignment": 0
+					} ) {
+						name: "panel8"
+						"preferredSize": new java.awt.Dimension( 131, 14 )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label5"
+							"text": "Enter Account 1"
+							"preferredSize": new java.awt.Dimension( 90, 14 )
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "textAccount1"
+							"text": "Enter Account 1"
+							"preferredSize": new java.awt.Dimension( 100, 20 )
+						} )
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+						"alignment": 0
+					} ) {
+						name: "panel9"
+						"preferredSize": new java.awt.Dimension( 131, 14 )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label6"
+							"text": "Enter Account 2"
+							"preferredSize": new java.awt.Dimension( 90, 14 )
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "textAccount2"
+							"text": "Enter Account 2"
+							"preferredSize": new java.awt.Dimension( 100, 20 )
+						} )
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+						name: "panel10"
+						"preferredSize": new java.awt.Dimension( 10, 100 )
+					} )
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "btnAdd"
+				"text": "Add Transaction"
+				"alignmentX": 0.5f
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 650, 530 )
+		} )
+		add( new FormNonVisual( "javax.swing.ButtonGroup" ) {
+			name: "typeGroup"
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 440 )
+		} )
+	}
+}

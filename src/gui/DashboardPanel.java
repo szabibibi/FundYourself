@@ -5,7 +5,13 @@
 package gui;
 
 import java.awt.*;
+import java.util.ArrayList;
+
 import javax.swing.*;
+import javax.swing.table.*;
+
+import functionality.Account;
+import functionality.MoneyInfo;
 
 /**
  * @author Szabolcs Orban
@@ -20,7 +26,8 @@ public class DashboardPanel extends JPanel {
 		// Generated using JFormDesigner Evaluation license - Szabolcs Orban
 		panel1 = new JPanel();
 		label1 = new JLabel();
-		label2 = new JLabel();
+		scrollPane1 = new JScrollPane();
+		accountsTable = new JTable();
 		label3 = new JLabel();
 
 		//======== this ========
@@ -45,9 +52,29 @@ public class DashboardPanel extends JPanel {
 			label1.setText("<Expenses PieChart>");
 			panel1.add(label1);
 
-			//---- label2 ----
-			label2.setText("<Account List>");
-			panel1.add(label2);
+			//======== scrollPane1 ========
+			{
+
+				//---- accountsTable ----
+				accountsTable.setModel(new DefaultTableModel(
+					new Object[][] {
+						{null, null},
+						{null, null},
+						{null, null},
+						{null, null},
+						{null, null},
+						{null, null},
+						{null, null},
+						{null, null},
+					},
+					new String[] {
+						"Account", "Balance"
+					}
+				));
+				accountsTable.setEnabled(false);
+				scrollPane1.setViewportView(accountsTable);
+			}
+			panel1.add(scrollPane1);
 		}
 		add(panel1);
 
@@ -61,7 +88,23 @@ public class DashboardPanel extends JPanel {
 	// Generated using JFormDesigner Evaluation license - Szabolcs Orban
 	private JPanel panel1;
 	private JLabel label1;
-	private JLabel label2;
+	private JScrollPane scrollPane1;
+	private JTable accountsTable;
 	private JLabel label3;
 	// JFormDesigner - End of variables declaration  //GEN-END:variables
+	public void ClearInfo() {
+		accountsTable.setModel(new DefaultTableModel());
+	}
+
+	public void SetInfo(MoneyInfo moneyInfo, int userID) {
+		ArrayList<Account> accList = moneyInfo.getAccountList().getAccountList().get(userID);
+		
+		String[] columnNames = {"Account", "Balance"};
+		accountsTable.setModel(new DefaultTableModel(columnNames, accList.size()));
+		for (int i = 0; i < accList.size(); i++)
+		{
+			accountsTable.getModel().setValueAt(accList.get(i).name, i, 0);
+			accountsTable.getModel().setValueAt(accList.get(i).balance, i, 1);
+		}
+	}
 }

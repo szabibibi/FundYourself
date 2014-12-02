@@ -18,9 +18,58 @@ new FormModel {
 					name: "label1"
 					"text": "<Expenses PieChart>"
 				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "label2"
-					"text": "<Account List>"
+				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+					name: "scrollPane1"
+					add( new FormComponent( "javax.swing.JTable" ) {
+						name: "accountsTable"
+						"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+							} )
+						}, new java.util.Vector {
+							add( "Account" )
+							add( "Balance" )
+						}, new java.util.Vector {
+							add( null )
+							add( null )
+						}, new java.util.Vector {
+							add( null )
+							add( null )
+						}, new java.util.Vector {
+							add( null )
+							add( null )
+						} )
+						"enabled": false
+					} )
 				} )
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {

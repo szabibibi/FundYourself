@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UserInfo>
+	<accounts>
+		<account userID = "0" id = "0" name = "BCR" balance = "3000" />
+		<account userID = "0" id = "1" name = "Pocket" balance = "20" />
+	</accounts>
+	<transactions>
+	</transactions>
+</UserInfo>

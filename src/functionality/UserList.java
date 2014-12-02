@@ -71,4 +71,8 @@ public class UserList {
         	e.printStackTrace();
         }
 	}
+
+	public int size() {
+		return userList.size();
+	}
 }

@@ -9,6 +9,7 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+import functionality.MoneyInfo;
 import functionality.User;
 import functionality.UserList;
 //import org.jdesktop.swingx.*;
@@ -22,6 +23,7 @@ public class MainGUI extends JFrame implements ActionListener {
 		AddListeners();
 		setVisible(true);
 		userList.ReadFromFile("users.xml");
+		moneyInfo.ReadFromFile(userList);
 	}
 
 	private void AddListeners() {
@@ -115,7 +117,10 @@ public class MainGUI extends JFrame implements ActionListener {
 	}
 
 	private User CurrentUser;
+	private MoneyInfo moneyInfo = new MoneyInfo();
 	private UserList userList = new UserList();
+	
+	
 	private AccountPanel accountPanel1 = new AccountPanel();
 	private DashboardPanel dashboardPanel1 = new DashboardPanel();
 	private EventsPanel eventsPanel1 = new EventsPanel();
@@ -278,8 +283,8 @@ public class MainGUI extends JFrame implements ActionListener {
 		else if (arg0.getSource() == accountPanel1.getBtnSignin()) {
 			int userID = accountPanel1.ValidateSignin(userList);
 			if (userID > -1) {
-				btnAccount.setEnabled(false);
-				repaint();
+				SignUserOut();
+				SignUserIn(userID);
 			}
 		}
 		else if (arg0.getSource() == accountPanel1.getBtnCreate()) {
@@ -287,5 +292,18 @@ public class MainGUI extends JFrame implements ActionListener {
 				userList.CreateUser(accountPanel1.GetNewUsername(), accountPanel1.GetNewPassword());
 			}
 		}
+	}
+
+	private void SignUserIn(int userID) {
+		CurrentUser = userList.userList.get(userID);
+		dashboardPanel1.SetInfo(moneyInfo, userID);
+	}
+
+	private void SignUserOut() {
+		if (CurrentUser == null) {
+			return;
+		}
+		moneyInfo.Clear();
+		dashboardPanel1.ClearInfo();
 	}
 }

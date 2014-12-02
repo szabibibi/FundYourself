@@ -20,37 +20,30 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "btnAccount"
 					"text": "Account"
-					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "AccountButtonPressed", true ) )
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "btnDashboard"
 					"text": "Dashboard"
-					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "DashboardButtonPressed", true ) )
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "btnAddTransaction"
 					"text": "Add Transaction"
-					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "AddTransactionButtonPressed", true ) )
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "btnReports"
 					"text": "Reports"
-					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "ReportsButtonPressed", true ) )
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "btnEvents"
 					"text": "Events"
-					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "EventsButtonPressed", true ) )
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "btnFriends"
 					"text": "Friends"
-					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "FriendsButtonPressed", true ) )
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "btnSettings"
 					"text": "Settings"
-					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "SettingsButonPressed", true ) )
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 				"vAlign": 0

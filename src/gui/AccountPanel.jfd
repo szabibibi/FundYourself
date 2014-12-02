@@ -35,7 +35,7 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JTextField" ) {
 						name: "textUserSignin"
-						"text": "Enter Username"
+						"preferredSize": new java.awt.Dimension( 120, 20 )
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
@@ -50,9 +50,12 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JPasswordField" ) {
 						name: "textPasswordSignin"
-						"text": "Enter Password"
-						"preferredSize": new java.awt.Dimension( 83, 20 )
+						"preferredSize": new java.awt.Dimension( 120, 20 )
 					} )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "btnSignin"
+					"text": "Sign In"
 				} )
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
@@ -79,7 +82,7 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JTextField" ) {
 						name: "textUserCreate"
-						"text": "Enter Username"
+						"preferredSize": new java.awt.Dimension( 120, 20 )
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
@@ -94,8 +97,7 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JPasswordField" ) {
 						name: "textPasswordCreate"
-						"text": "Enter Password"
-						"preferredSize": new java.awt.Dimension( 83, 20 )
+						"preferredSize": new java.awt.Dimension( 120, 20 )
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
@@ -109,9 +111,12 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JPasswordField" ) {
 						name: "textConfirmCreate"
-						"text": "Enter Password"
-						"preferredSize": new java.awt.Dimension( 83, 20 )
+						"preferredSize": new java.awt.Dimension( 120, 20 )
 					} )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "btnCreate"
+					"text": "Create"
 				} )
 			} )
 		}, new FormLayoutConstraints( null ) {

@@ -5,9 +5,12 @@
 package gui;
 
 import java.awt.*;
+import java.util.Arrays;
+
 import javax.swing.*;
 import javax.swing.border.*;
-//import com.jgoodies.forms.layout.*;
+
+import functionality.UserList;
 
 /**
  * @author Szabolcs Orban
@@ -15,6 +18,22 @@ import javax.swing.border.*;
 public class AccountPanel extends JPanel {
 	public AccountPanel() {
 		initComponents();
+	}
+
+	public JButton getBtnSignin() {
+		return btnSignin;
+	}
+
+	public void setBtnSignin(JButton btnSignin) {
+		this.btnSignin = btnSignin;
+	}
+
+	public JButton getBtnCreate() {
+		return btnCreate;
+	}
+
+	public void setBtnCreate(JButton btnCreate) {
+		this.btnCreate = btnCreate;
 	}
 
 	private void initComponents() {
@@ -28,6 +47,7 @@ public class AccountPanel extends JPanel {
 		panel4 = new JPanel();
 		label4 = new JLabel();
 		textPasswordSignin = new JPasswordField();
+		btnSignin = new JButton();
 		panel2 = new JPanel();
 		label2 = new JLabel();
 		panel5 = new JPanel();
@@ -39,6 +59,7 @@ public class AccountPanel extends JPanel {
 		panel7 = new JPanel();
 		label7 = new JLabel();
 		textConfirmCreate = new JPasswordField();
+		btnCreate = new JButton();
 
 		//======== this ========
 		setPreferredSize(new Dimension(654, 532));
@@ -80,7 +101,7 @@ public class AccountPanel extends JPanel {
 				panel3.add(label3);
 
 				//---- textUserSignin ----
-				textUserSignin.setText("Enter Username");
+				textUserSignin.setPreferredSize(new Dimension(120, 20));
 				panel3.add(textUserSignin);
 			}
 			panel1.add(panel3);
@@ -98,11 +119,14 @@ public class AccountPanel extends JPanel {
 				panel4.add(label4);
 
 				//---- textPasswordSignin ----
-				textPasswordSignin.setText("Enter Password");
-				textPasswordSignin.setPreferredSize(new Dimension(83, 20));
+				textPasswordSignin.setPreferredSize(new Dimension(120, 20));
 				panel4.add(textPasswordSignin);
 			}
 			panel1.add(panel4);
+
+			//---- btnSignin ----
+			btnSignin.setText("Sign In");
+			panel1.add(btnSignin);
 		}
 		add(panel1);
 
@@ -131,7 +155,7 @@ public class AccountPanel extends JPanel {
 				panel5.add(label5);
 
 				//---- textUserCreate ----
-				textUserCreate.setText("Enter Username");
+				textUserCreate.setPreferredSize(new Dimension(120, 20));
 				panel5.add(textUserCreate);
 			}
 			panel2.add(panel5);
@@ -149,8 +173,7 @@ public class AccountPanel extends JPanel {
 				panel6.add(label6);
 
 				//---- textPasswordCreate ----
-				textPasswordCreate.setText("Enter Password");
-				textPasswordCreate.setPreferredSize(new Dimension(83, 20));
+				textPasswordCreate.setPreferredSize(new Dimension(120, 20));
 				panel6.add(textPasswordCreate);
 			}
 			panel2.add(panel6);
@@ -167,11 +190,14 @@ public class AccountPanel extends JPanel {
 				panel7.add(label7);
 
 				//---- textConfirmCreate ----
-				textConfirmCreate.setText("Enter Password");
-				textConfirmCreate.setPreferredSize(new Dimension(83, 20));
+				textConfirmCreate.setPreferredSize(new Dimension(120, 20));
 				panel7.add(textConfirmCreate);
 			}
 			panel2.add(panel7);
+
+			//---- btnCreate ----
+			btnCreate.setText("Create");
+			panel2.add(btnCreate);
 		}
 		add(panel2);
 		// JFormDesigner - End of component initialization  //GEN-END:initComponents
@@ -187,6 +213,7 @@ public class AccountPanel extends JPanel {
 	private JPanel panel4;
 	private JLabel label4;
 	private JPasswordField textPasswordSignin;
+	private JButton btnSignin;
 	private JPanel panel2;
 	private JLabel label2;
 	private JPanel panel5;
@@ -198,5 +225,39 @@ public class AccountPanel extends JPanel {
 	private JPanel panel7;
 	private JLabel label7;
 	private JPasswordField textConfirmCreate;
+	private JButton btnCreate;
 	// JFormDesigner - End of variables declaration  //GEN-END:variables
+	public int ValidateSignin(UserList userList) {
+		return userList.GetValidUser(textUserSignin.getText(), new String(textPasswordSignin.getPassword()));
+	}
+
+	public void AddMainGUIListener(MainGUI mainGUI) {
+		btnSignin.addActionListener(mainGUI);
+		btnCreate.addActionListener(mainGUI);
+	}
+
+	public boolean ValidateNewUser(UserList userList) {
+		if (!Arrays.equals(textPasswordCreate.getPassword(), textConfirmCreate.getPassword())) {
+			return false;
+		}
+		
+		if (textPasswordCreate.getPassword().length == 0)
+			return false;
+		
+		if (textUserCreate.getText().length() == 0)
+			return false;
+		
+		if (userList.hasUser(textUserCreate.getText())) {
+			return false;
+		}
+		return true;
+	}
+
+	public String GetNewPassword() {
+		return new String(textPasswordCreate.getPassword()); 
+	}
+
+	public String GetNewUsername() {
+		return textUserCreate.getText(); 
+	}
 }

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <UserInfo>
   <accounts>
-    <account id="0" name="BCR" balance="3000.0" userID="0" />
+    <account id="0" name="BCR" balance="4000.0" userID="0" />
     <account id="1" name="Pocket" balance="20.0" userID="0" />
+    <account id="2" name="KluKlux" balance="4001.0" userID="0" />
   </accounts>
   <transactions>
     <transaction id="0" userID="0" src="0" dst="-1" amount="200.0" tag="party" type="expense" />

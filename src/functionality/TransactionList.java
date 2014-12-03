@@ -7,7 +7,16 @@ import org.jdom2.DataConversionException;
 import org.jdom2.Element;
 
 public class TransactionList {
+	private int transactionsCount = 0;
 	private HashMap<Integer, ArrayList<Transaction>> transactions = new HashMap<Integer, ArrayList<Transaction>>();
+
+	public int getTransactionsCount() {
+		return transactionsCount;
+	}
+
+	public void setTransactionsCount(int transactionsCount) {
+		this.transactionsCount = transactionsCount;
+	}
 
 	public HashMap<Integer, ArrayList<Transaction>> getTransactions() {
 		return transactions;
@@ -54,6 +63,7 @@ public class TransactionList {
 				newList.add(new Transaction(id, userID, type, src, dst, amount, tag));
 				getTransactionList().put(userID, newList);
 			}
+			setTransactionsCount(getTransactionsCount() + 1);
 		}
 	}
 
@@ -61,6 +71,12 @@ public class TransactionList {
 		for (int i = 0; i < size; i++){
 			getTransactions().put(i, new ArrayList<Transaction>());
 		}
+	}
+
+	public void AddTransaction(int userID, Transaction trans) {
+		// TODO Auto-generated method stub
+		transactions.get(userID).add(trans);
+		transactionsCount += 1;
 	}
 
 }

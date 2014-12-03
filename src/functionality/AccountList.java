@@ -8,6 +8,7 @@ import org.jdom2.Element;
 
 
 public class AccountList {
+	private int accountsCount = 0;
 	private HashMap<Integer, ArrayList<Account>> accountList = new HashMap<Integer, ArrayList<Account>>();
 
 	public HashMap<Integer, ArrayList<Account>> getAccountList() {
@@ -33,6 +34,7 @@ public class AccountList {
 				newList.add(new Account(id, name, balance, userID));
 				getAccountList().put(userID, newList);
 			}
+			accountsCount += 1;
 		}
 	}
 
@@ -40,6 +42,11 @@ public class AccountList {
 		for (int i = 0; i < size; i++){
 			accountList.put(i, new ArrayList<Account>());
 		}
+	}
+
+	public void AddAccount(int userID, String accountName, double accountBalance) {
+		accountList.get(userID).add(new Account(accountsCount, accountName, accountBalance, userID));
+		accountsCount++;
 	}
 	
 }

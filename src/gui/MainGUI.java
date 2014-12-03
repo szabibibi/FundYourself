@@ -37,6 +37,7 @@ public class MainGUI extends JFrame implements ActionListener {
 		
 		accountPanel1.AddMainGUIListener(this);
 		transactionPanel1.AddMainGUIListener(this);
+		settingsPanel1.AddMainGUIListener(this);
 	}
 	private void RemoveCustomPanel(){
 		getContentPane().remove(accountPanel1);
@@ -301,7 +302,15 @@ public class MainGUI extends JFrame implements ActionListener {
 			
 			if (transactionPanel1.ValidateInfo(CurrentUser.id, userList, moneyInfo)) {
 				int userID = CurrentUser.id;
-				moneyInfo.CreateTransaction(userID, transactionPanel1.RetrieveTransaction(moneyInfo.getTransactions().getTransactions().get(userID).size(), userID, moneyInfo));
+				moneyInfo.CreateTransaction(userID, transactionPanel1.RetrieveTransaction(moneyInfo.getTransactions().getTransactionsCount(), userID, moneyInfo));
+				dashboardPanel1.SetInfo(moneyInfo, userID);
+				DashboardButtonPressed(null);
+			}
+		}
+		else if (arg0.getSource() == settingsPanel1.getSaveButton()) {
+			if (settingsPanel1.ValidateAccount()) {
+				int userID = CurrentUser.id;
+				moneyInfo.UpdateOrCreateAccount(userID, settingsPanel1.GetAccountName(), settingsPanel1.getAccountBalance());
 				dashboardPanel1.SetInfo(moneyInfo, userID);
 				DashboardButtonPressed(null);
 			}

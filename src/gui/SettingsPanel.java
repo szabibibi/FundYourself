@@ -12,6 +12,14 @@ import javax.swing.border.*;
  * @author Szabolcs Orban
  */
 public class SettingsPanel extends JPanel {
+	public JButton getSaveButton() {
+		return btnSave;
+	}
+
+	public void setSaveButton(JButton button1) {
+		this.btnSave = button1;
+	}
+
 	public SettingsPanel() {
 		initComponents();
 	}
@@ -24,11 +32,11 @@ public class SettingsPanel extends JPanel {
 		label2 = new JLabel();
 		panel4 = new JPanel();
 		label4 = new JLabel();
-		textUserSignin2 = new JTextField();
+		textAccount = new JTextField();
 		panel5 = new JPanel();
 		label5 = new JLabel();
-		textUserSignin3 = new JTextField();
-		button1 = new JButton();
+		textBalance = new JTextField();
+		btnSave = new JButton();
 
 		//======== this ========
 		setPreferredSize(new Dimension(654, 532));
@@ -72,14 +80,14 @@ public class SettingsPanel extends JPanel {
 			panel4.setLayout(new FlowLayout());
 
 			//---- label4 ----
-			label4.setText("Current Balance");
+			label4.setText("Account");
 			label4.setMinimumSize(new Dimension(48, 14));
 			label4.setPreferredSize(new Dimension(86, 14));
 			panel4.add(label4);
 
-			//---- textUserSignin2 ----
-			textUserSignin2.setText("Enter Amount");
-			panel4.add(textUserSignin2);
+			//---- textAccount ----
+			textAccount.setPreferredSize(new Dimension(100, 20));
+			panel4.add(textAccount);
 		}
 		add(panel4);
 
@@ -91,22 +99,22 @@ public class SettingsPanel extends JPanel {
 			panel5.setLayout(new FlowLayout());
 
 			//---- label5 ----
-			label5.setText("Account");
+			label5.setText("Current Balance");
 			label5.setMinimumSize(new Dimension(48, 14));
 			label5.setPreferredSize(new Dimension(86, 14));
 			label5.setAlignmentX(0.5F);
 			panel5.add(label5);
 
-			//---- textUserSignin3 ----
-			textUserSignin3.setText("Enter Account");
-			panel5.add(textUserSignin3);
+			//---- textBalance ----
+			textBalance.setPreferredSize(new Dimension(100, 20));
+			panel5.add(textBalance);
 		}
 		add(panel5);
 
-		//---- button1 ----
-		button1.setText("Save");
-		button1.setAlignmentX(0.5F);
-		add(button1);
+		//---- btnSave ----
+		btnSave.setText("Save");
+		btnSave.setAlignmentX(0.5F);
+		add(btnSave);
 		// JFormDesigner - End of component initialization  //GEN-END:initComponents
 	}
 
@@ -117,10 +125,35 @@ public class SettingsPanel extends JPanel {
 	private JLabel label2;
 	private JPanel panel4;
 	private JLabel label4;
-	private JTextField textUserSignin2;
+	private JTextField textAccount;
 	private JPanel panel5;
 	private JLabel label5;
-	private JTextField textUserSignin3;
-	private JButton button1;
+	private JTextField textBalance;
+	private JButton btnSave;
 	// JFormDesigner - End of variables declaration  //GEN-END:variables
+	public boolean ValidateAccount() {
+		if (textAccount.getText().isEmpty())
+			return false;
+		if (textBalance.getText().isEmpty())
+			return false;
+		try {
+			Double.parseDouble(textBalance.getText());
+		} catch (Exception e) {
+			return false;
+		}
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	public double getAccountBalance() {
+		return Double.parseDouble(textBalance.getText());
+	}
+
+	public String GetAccountName() {
+		return textAccount.getText();
+	}
+
+	public void AddMainGUIListener(MainGUI mainGUI) {
+		btnSave.addActionListener(mainGUI);	
+	}
 }

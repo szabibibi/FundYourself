@@ -135,8 +135,38 @@ public class MoneyInfo {
 		return null;
 	}
 
+	private Account GetAccount(int userID, String accName) {
+		for (Account a : accountList.getAccountList().get(userID)) {
+			if (a.name.equals(accName)) {
+				return a;
+			}
+		}
+		return null;
+	}
+
 	private void AddToTransactionList(int userID, Transaction trans) {
-		transactions.getTransactionList().get(userID).add(trans);
+		transactions.AddTransaction(userID, trans);
+	}
+
+	public void UpdateOrCreateAccount(int userID, String accountName,
+			double accountBalance) {
+		Account a = GetAccount(userID, accountName);
+		if (a == null) {
+			CreateNewAccount(userID, accountName, accountBalance);
+		}
+		else {
+			UpdateAccount(a, accountBalance);
+		}
+		SerializeEverything();
+	}
+
+	private void UpdateAccount(Account a, double accountBalance) {
+		a.balance = accountBalance;
+	}
+
+	private void CreateNewAccount(int userID, String accountName,
+			double accountBalance) {
+		accountList.AddAccount(userID, accountName, accountBalance);
 	}
 	
 }

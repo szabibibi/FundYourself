@@ -6,11 +6,11 @@
     <account id="2" name="KluKlux" balance="4001.0" userID="0" />
   </accounts>
   <transactions>
-    <transaction id="0" userID="0" src="0" dst="-1" amount="200.0" tag="party" type="expense" />
-    <transaction id="1" userID="0" src="1" dst="-1" amount="1200.0" tag="werk" type="income" />
-    <transaction id="2" userID="0" src="0" dst="1" amount="1200.0" tag="" type="transfer" />
-    <transaction id="3" userID="0" src="0" dst="-1" amount="5.0" tag="lala" type="expense" />
-    <transaction id="4" userID="0" src="-1" dst="0" amount="5.0" tag="lala" type="income" />
-    <transaction id="5" userID="0" src="0" dst="1" amount="0.0" tag="lala" type="transfer" />
+    <transaction id="0" userID="0" src="0" dst="-1" amount="200.0" tag="party" type="expense" date='11/11/2012'/>
+    <transaction id="1" userID="0" src="1" dst="-1" amount="1200.0" tag="werk" type="income" date='11/11/2012'/>
+    <transaction id="2" userID="0" src="0" dst="1" amount="1200.0" tag="" type="transfer" date='11/11/2012'/>
+    <transaction id="3" userID="0" src="0" dst="-1" amount="5.0" tag="lala" type="expense" date='11/11/2012'/>
+    <transaction id="4" userID="0" src="-1" dst="0" amount="5.0" tag="lala" type="income" date='11/11/2012'/>
+    <transaction id="5" userID="0" src="0" dst="1" amount="0.0" tag="lala" type="transfer" date='11/11/2012'/>
   </transactions>
 </UserInfo>

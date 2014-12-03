@@ -12,6 +12,7 @@ import javax.swing.table.*;
 
 import functionality.Account;
 import functionality.MoneyInfo;
+import functionality.Transaction;
 
 /**
  * @author Szabolcs Orban
@@ -28,7 +29,8 @@ public class DashboardPanel extends JPanel {
 		label1 = new JLabel();
 		scrollPane1 = new JScrollPane();
 		accountsTable = new JTable();
-		label3 = new JLabel();
+		scrollPane2 = new JScrollPane();
+		transactionTable = new JTable();
 
 		//======== this ========
 		setPreferredSize(new Dimension(654, 532));
@@ -78,9 +80,23 @@ public class DashboardPanel extends JPanel {
 		}
 		add(panel1);
 
-		//---- label3 ----
-		label3.setText("Transactions");
-		add(label3);
+		//======== scrollPane2 ========
+		{
+
+			//---- transactionTable ----
+			transactionTable.setEnabled(false);
+			transactionTable.setModel(new DefaultTableModel(
+				new Object[][] {
+					{null, null, null, null, null},
+					{null, null, null, null, null},
+				},
+				new String[] {
+					"Type", "Amount", "Source", "Destination", "Tag"
+				}
+			));
+			scrollPane2.setViewportView(transactionTable);
+		}
+		add(scrollPane2);
 		// JFormDesigner - End of component initialization  //GEN-END:initComponents
 	}
 
@@ -90,7 +106,8 @@ public class DashboardPanel extends JPanel {
 	private JLabel label1;
 	private JScrollPane scrollPane1;
 	private JTable accountsTable;
-	private JLabel label3;
+	private JScrollPane scrollPane2;
+	private JTable transactionTable;
 	// JFormDesigner - End of variables declaration  //GEN-END:variables
 	public void ClearInfo() {
 		accountsTable.setModel(new DefaultTableModel());
@@ -106,5 +123,28 @@ public class DashboardPanel extends JPanel {
 			accountsTable.getModel().setValueAt(accList.get(i).name, i, 0);
 			accountsTable.getModel().setValueAt(accList.get(i).balance, i, 1);
 		}
+		
+		ArrayList<Transaction> transList = moneyInfo.getTransactions().getTransactions().get(userID);
+		
+		String[] transColumnNames = {"Type", "Source", "Destination", "Amount", "Tag"};
+		transactionTable.setModel(new DefaultTableModel(transColumnNames, transList.size()));
+		for (int i = 0; i < transList.size(); i++)
+		{
+			transactionTable.getModel().setValueAt(transList.get(i).type.toString(), i, 0);
+			
+			if (transList.get(i).srcAcc >= 0)
+				transactionTable.getModel().setValueAt(accList.get(transList.get(i).srcAcc).name, i, 1);
+			else
+				transactionTable.getModel().setValueAt("N/A", i, 1);
+			
+			if (transList.get(i).dstAcc >= 0)
+				transactionTable.getModel().setValueAt(accList.get(transList.get(i).dstAcc).name, i, 2);
+			else
+				transactionTable.getModel().setValueAt("N/A", i, 2);
+
+			transactionTable.getModel().setValueAt(transList.get(i).amount, i, 3);
+			transactionTable.getModel().setValueAt(transList.get(i).tag, i, 4);
+		}
+
 	}
 }

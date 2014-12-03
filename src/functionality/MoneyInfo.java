@@ -8,6 +8,15 @@ import org.jdom2.input.SAXBuilder;
 
 public class MoneyInfo {
 	private AccountList accountList = new AccountList();
+	private TransactionList transactions = new TransactionList();
+
+	public TransactionList getTransactions() {
+		return transactions;
+	}
+
+	public void setTransactions(TransactionList transactions) {
+		this.transactions = transactions;
+	}
 
 	public AccountList getAccountList() {
 		return accountList;
@@ -29,6 +38,7 @@ public class MoneyInfo {
 			Document document = builder.build(f);
 			Element rootNode = document.getRootElement();
 			getAccountList().ReadFromXML(rootNode.getChild("accounts"));
+			getTransactions().ReadFromXML(rootNode.getChild("transactions"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

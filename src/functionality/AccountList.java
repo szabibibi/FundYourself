@@ -25,12 +25,12 @@ public class AccountList {
 			String name = e.getAttributeValue("name");
 			double balance = e.getAttribute("balance").getDoubleValue();
 			if (getAccountList().containsKey(userID)) {
-				getAccountList().get(userID).add(new Account(id, name, balance));
+				getAccountList().get(userID).add(new Account(id, name, balance, userID));
 			}
 			else
 			{
 				ArrayList<Account> newList = new ArrayList<Account>();
-				newList.add(new Account(id, name, balance));
+				newList.add(new Account(id, name, balance, userID));
 				getAccountList().put(userID, newList);
 			}
 		}

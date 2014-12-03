@@ -5,13 +5,26 @@
 package gui;
 
 import java.awt.*;
+
 import javax.swing.*;
 import javax.swing.border.*;
+
+import functionality.MoneyInfo;
+import functionality.Transaction;
+import functionality.UserList;
 
 /**
  * @author Szabolcs Orban
  */
 public class TransactionPanel extends JPanel {
+	public JButton getBtnAdd() {
+		return btnAdd;
+	}
+
+	public void setBtnAdd(JButton btnAdd) {
+		this.btnAdd = btnAdd;
+	}
+
 	public TransactionPanel() {
 		initComponents();
 	}
@@ -79,6 +92,7 @@ public class TransactionPanel extends JPanel {
 
 				//---- radioExpense ----
 				radioExpense.setText("Expense");
+				radioExpense.setSelected(true);
 				panel2.add(radioExpense);
 
 				//---- radioIncome ----
@@ -113,7 +127,6 @@ public class TransactionPanel extends JPanel {
 					panel5.add(label2);
 
 					//---- textTag ----
-					textTag.setText("Enter Tag");
 					textTag.setPreferredSize(new Dimension(100, 20));
 					panel5.add(textTag);
 				}
@@ -130,7 +143,6 @@ public class TransactionPanel extends JPanel {
 					panel6.add(label3);
 
 					//---- textAmount ----
-					textAmount.setText("Enter Amount");
 					textAmount.setPreferredSize(new Dimension(100, 20));
 					panel6.add(textAmount);
 				}
@@ -147,7 +159,6 @@ public class TransactionPanel extends JPanel {
 					panel7.add(label4);
 
 					//---- textDate ----
-					textDate.setText("Enter Date");
 					textDate.setPreferredSize(new Dimension(100, 20));
 					panel7.add(textDate);
 				}
@@ -164,7 +175,6 @@ public class TransactionPanel extends JPanel {
 					panel8.add(label5);
 
 					//---- textAccount1 ----
-					textAccount1.setText("Enter Account 1");
 					textAccount1.setPreferredSize(new Dimension(100, 20));
 					panel8.add(textAccount1);
 				}
@@ -181,7 +191,6 @@ public class TransactionPanel extends JPanel {
 					panel9.add(label6);
 
 					//---- textAccount2 ----
-					textAccount2.setText("Enter Account 2");
 					textAccount2.setPreferredSize(new Dimension(100, 20));
 					panel9.add(textAccount2);
 				}
@@ -239,4 +248,55 @@ public class TransactionPanel extends JPanel {
 	private JPanel panel10;
 	private JButton btnAdd;
 	// JFormDesigner - End of variables declaration  //GEN-END:variables
+	public boolean ValidateInfo(int userID, UserList userList, MoneyInfo moneyInfo) {
+		if (!radioExpense.isSelected() && !radioIncome.isSelected() && !radioTransaction.isSelected())
+			return false;
+		
+		if (textTag.getText().isEmpty())
+			return false;
+		
+		if (textAmount.getText().isEmpty())
+			return false;
+		
+		try {
+			Double.parseDouble(textAmount.getText());
+		} catch (Exception e) {
+			return false;
+		}
+		
+		if (radioTransaction.isSelected() && (textAccount1.getText().isEmpty() || textAccount2.getText().isEmpty())) {
+			return false;
+		}
+		
+		if (!radioTransaction.isSelected() && (textAccount1.getText().isEmpty() && textAccount2.getText().isEmpty()))
+			return false;
+		
+		if (!textAccount1.getText().isEmpty() && !moneyInfo.HasAccount(userID, textAccount1.getText()))
+			return false;
+		
+		if (!textAccount2.getText().isEmpty() && !moneyInfo.HasAccount(userID, textAccount2.getText()))
+			return false;
+
+		return true;
+	}
+
+	public Transaction RetrieveTransaction(int id, int userID, MoneyInfo moneyInfo) {
+		String type = "";
+		if (radioExpense.isSelected())
+			type = "expense";
+		else if (radioIncome.isSelected())
+			type = "income";
+		else if (radioTransaction.isSelected())
+			type = "transfer";
+		
+		return new Transaction(id, userID, type,
+				moneyInfo.GetAccountID(userID, textAccount1.getText()),
+				moneyInfo.GetAccountID(userID, textAccount2.getText()),
+				Double.parseDouble(textAmount.getText()),
+				textTag.getText());
+	}
+
+	public void AddMainGUIListener(MainGUI mainGUI) {
+		btnAdd.addActionListener(mainGUI);
+	}
 }

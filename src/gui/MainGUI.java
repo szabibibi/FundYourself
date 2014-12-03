@@ -36,6 +36,7 @@ public class MainGUI extends JFrame implements ActionListener {
 		btnAddTransaction.addActionListener(this);
 		
 		accountPanel1.AddMainGUIListener(this);
+		transactionPanel1.AddMainGUIListener(this);
 	}
 	private void RemoveCustomPanel(){
 		getContentPane().remove(accountPanel1);
@@ -285,11 +286,24 @@ public class MainGUI extends JFrame implements ActionListener {
 			if (userID > -1) {
 				SignUserOut();
 				SignUserIn(userID);
+				DashboardButtonPressed(null);
 			}
 		}
 		else if (arg0.getSource() == accountPanel1.getBtnCreate()) {
 			if (accountPanel1.ValidateNewUser(userList)) {
 				userList.CreateUser(accountPanel1.GetNewUsername(), accountPanel1.GetNewPassword());
+				DashboardButtonPressed(null);
+			}
+		}
+		else if (arg0.getSource() == transactionPanel1.getBtnAdd()) {
+			if (CurrentUser == null)
+				return;
+			
+			if (transactionPanel1.ValidateInfo(CurrentUser.id, userList, moneyInfo)) {
+				int userID = CurrentUser.id;
+				moneyInfo.CreateTransaction(userID, transactionPanel1.RetrieveTransaction(moneyInfo.getTransactions().getTransactions().get(userID).size(), userID, moneyInfo));
+				dashboardPanel1.SetInfo(moneyInfo, userID);
+				DashboardButtonPressed(null);
 			}
 		}
 	}

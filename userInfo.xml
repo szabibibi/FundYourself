@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <UserInfo>
-	<accounts>
-		<account userID = "0" id = "0" name = "BCR" balance = "3000" />
-		<account userID = "0" id = "1" name = "Pocket" balance = "20" />
-	</accounts>
-	<transactions>
-		<transaction id = "0" userID = "0" type = "expense" src = "0" amount = "200" tag = "party" />
-		<transaction id = "1" userID = "0" type = "income" src = "1" amount = "1200" tag = "werk" />
-		<transaction id = "2" userID = "0" type = "transfer" src = "0" dst = "1" amount = "1200" tag = "" />
-	</transactions>
+  <accounts>
+    <account id="0" name="BCR" balance="3000.0" userID="0" />
+    <account id="1" name="Pocket" balance="20.0" userID="0" />
+  </accounts>
+  <transactions>
+    <transaction id="0" userID="0" src="0" dst="-1" amount="200.0" tag="party" type="expense" />
+    <transaction id="1" userID="0" src="1" dst="-1" amount="1200.0" tag="werk" type="income" />
+    <transaction id="2" userID="0" src="0" dst="1" amount="1200.0" tag="" type="transfer" />
+    <transaction id="3" userID="0" src="0" dst="-1" amount="5.0" tag="lala" type="expense" />
+    <transaction id="4" userID="0" src="-1" dst="0" amount="5.0" tag="lala" type="income" />
+    <transaction id="5" userID="0" src="0" dst="1" amount="0.0" tag="lala" type="transfer" />
+  </transactions>
 </UserInfo>

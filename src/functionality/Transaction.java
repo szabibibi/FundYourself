@@ -1,5 +1,7 @@
 package functionality;
 
+import org.jdom2.Element;
+
 public class Transaction {
 	public enum Type {
 		Expense (0),
@@ -34,5 +36,18 @@ public class Transaction {
 			this.type = Type.Income;
 		else if (type.equals("transfer"))
 			this.type = Type.Transfer;
+	}
+
+	public void AddToXMLTree(Element transElem) {
+		Element elem = new Element("transaction");
+		elem.setAttribute("id", "" + id);
+		elem.setAttribute("userID", "" + userID);
+		elem.setAttribute("src", "" + srcAcc);
+		elem.setAttribute("dst", "" + dstAcc);
+		elem.setAttribute("amount", "" + amount);
+		elem.setAttribute("tag", tag);
+		elem.setAttribute("type", type.toString().toLowerCase());
+		
+		transElem.addContent(elem);
 	}
 }

@@ -10,7 +10,10 @@ import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
+import functionality.Transaction.Type;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map.Entry;
 
 public class MoneyInfo {
@@ -167,6 +170,74 @@ public class MoneyInfo {
 	private void CreateNewAccount(int userID, String accountName,
 			double accountBalance) {
 		accountList.AddAccount(userID, accountName, accountBalance);
+	}
+
+	public double GetTotalExpenses(int userID) {
+		double total = 0;
+		ArrayList<Transaction> transactions = this.getTransactions().getTransactionList().get(userID);
+		
+		for (Transaction t : transactions) {
+			if (t.type == Type.Expense) {
+				total += t.amount;
+			}
+		}
+		return total;
+	}
+
+	public HashMap<String, Expense> GetExpenses(MoneyInfo moneyInfo,
+			int userID, double total) {
+		HashMap<String, Expense> expenses = new HashMap<String, Expense>();
+		ArrayList<Transaction> transactions = getTransactions().getTransactionList().get(userID);
+		for (Transaction t : transactions) {
+			if (t.type != Type.Expense)
+				continue;
+			if (expenses.containsKey(t.tag)) {
+				expenses.get(t.tag).amount += t.amount;
+			}
+			else {
+				Expense e = new Expense(t.tag, t.amount, 0);
+				expenses.put(t.tag, e);
+			}
+		}
+		
+		for (Entry<String, Expense> e : expenses.entrySet()) {
+			e.getValue().percentage = (e.getValue().amount / total) * 100;
+		}
+		return expenses;
+	}
+
+	public double GetTotalExpensesThisMonth(int userID) {
+		double total = 0;
+		ArrayList<Transaction> transactions = this.getTransactions().GetTransactionsThisMonth(userID);
+		
+		for (Transaction t : transactions) {
+			if (t.type == Type.Expense) {
+				total += t.amount;
+			}
+		}
+		return total;
+	}
+
+	public HashMap<String, Expense> GetExpensesThisMonth(MoneyInfo moneyInfo,
+			int userID, double total) {
+		HashMap<String, Expense> expenses = new HashMap<String, Expense>();
+		ArrayList<Transaction> transactions = getTransactions().GetTransactionsThisMonth(userID);
+		for (Transaction t : transactions) {
+			if (t.type != Type.Expense)
+				continue;
+			if (expenses.containsKey(t.tag)) {
+				expenses.get(t.tag).amount += t.amount;
+			}
+			else {
+				Expense e = new Expense(t.tag, t.amount, 0);
+				expenses.put(t.tag, e);
+			}
+		}
+		
+		for (Entry<String, Expense> e : expenses.entrySet()) {
+			e.getValue().percentage = (e.getValue().amount / total) * 100;
+		}
+		return expenses;
 	}
 	
 }

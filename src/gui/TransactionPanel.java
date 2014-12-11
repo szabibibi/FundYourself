@@ -5,6 +5,8 @@
 package gui;
 
 import java.awt.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import javax.swing.*;
 import javax.swing.border.*;
@@ -280,7 +282,7 @@ public class TransactionPanel extends JPanel {
 		return true;
 	}
 
-	public Transaction RetrieveTransaction(int id, int userID, MoneyInfo moneyInfo) {
+	public Transaction RetrieveTransaction(int id, int userID, MoneyInfo moneyInfo) throws NumberFormatException, ParseException {
 		String type = "";
 		if (radioExpense.isSelected())
 			type = "expense";
@@ -293,7 +295,8 @@ public class TransactionPanel extends JPanel {
 				moneyInfo.GetAccountID(userID, textAccount1.getText()),
 				moneyInfo.GetAccountID(userID, textAccount2.getText()),
 				Double.parseDouble(textAmount.getText()),
-				textTag.getText());
+				textTag.getText(),
+				(new SimpleDateFormat("dd/MM/yyyy")).parse(textDate.getText()));
 	}
 
 	public void AddMainGUIListener(MainGUI mainGUI) {

@@ -1,5 +1,8 @@
 package functionality;
 
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -34,13 +37,16 @@ public class TransactionList {
 		this.setTransactions(transactions);
 	}
 
-	public void ReadFromXML(Element node) throws DataConversionException {
+	public void ReadFromXML(Element node) throws DataConversionException, ParseException {
 		for (Element e : node.getChildren("transaction")) {
 			int id = e.getAttribute("id").getIntValue();
 			int userID = e.getAttribute("userID").getIntValue();
 			int src = -1, dst = -1;
 			double amount;
 			String type, tag;
+			String dateStr = e.getAttribute("date").getValue();
+			SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
+			Date date = fmt.parse(dateStr);
 			
 			if (e.getAttribute("src") != null){
 				src = e.getAttribute("src").getIntValue();
@@ -55,12 +61,12 @@ public class TransactionList {
 			tag = e.getAttributeValue("tag");
 			
 			if (getTransactionList().containsKey(userID)) {
-				getTransactionList().get(userID).add(new Transaction(id, userID, type, src, dst, amount, tag));
+				getTransactionList().get(userID).add(new Transaction(id, userID, type, src, dst, amount, tag, date));
 			}
 			else
 			{
 				ArrayList<Transaction> newList = new ArrayList<Transaction>();
-				newList.add(new Transaction(id, userID, type, src, dst, amount, tag));
+				newList.add(new Transaction(id, userID, type, src, dst, amount, tag, date));
 				getTransactionList().put(userID, newList);
 			}
 			setTransactionsCount(getTransactionsCount() + 1);
@@ -77,6 +83,22 @@ public class TransactionList {
 		// TODO Auto-generated method stub
 		transactions.get(userID).add(trans);
 		transactionsCount += 1;
+	}
+
+	public ArrayList<Transaction> GetTransactionsThisMonth(int userID) {
+		ArrayList<Transaction> trans = new ArrayList<Transaction>();
+		Date currentDate = new Date();
+		for (Transaction t : transactions.get(userID)) {
+			long time1 = currentDate.getTime();
+			long time2 = t.date.getTime();
+			String strTime = (new SimpleDateFormat("dd/MM/yyyy")).format(t.date);
+			long timeDiff = time1 - time2;
+			timeDiff = (int)(timeDiff/(1000*60*60*24));
+			if (timeDiff <= 30) {
+				trans.add(t);
+			}
+		}
+		return trans;
 	}
 
 }

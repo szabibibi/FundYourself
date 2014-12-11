@@ -1,5 +1,8 @@
 package functionality;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.jdom2.Element;
 
 public class Transaction {
@@ -21,14 +24,16 @@ public class Transaction {
 	public double amount;
 	public Type type;
 	public String tag;
+	public Date date;
 	
-	public Transaction (int id, int userID, String type, int src, int dst, double amount, String tag) {
+	public Transaction (int id, int userID, String type, int src, int dst, double amount, String tag, Date date) {
 		this.id = id;
 		this.userID = userID;
 		this.srcAcc = src;
 		this.dstAcc = dst;
 		this.amount = amount;
 		this.tag = tag;
+		this.date = date;
 		
 		if (type.equals("expense"))
 			this.type = Type.Expense;
@@ -47,6 +52,7 @@ public class Transaction {
 		elem.setAttribute("amount", "" + amount);
 		elem.setAttribute("tag", tag);
 		elem.setAttribute("type", type.toString().toLowerCase());
+		elem.setAttribute("date", (new SimpleDateFormat("dd/MM/yyyy")).format(date));
 		
 		transElem.addContent(elem);
 	}

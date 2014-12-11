@@ -14,9 +14,40 @@ new FormModel {
 				"columns": 2
 			} ) {
 				name: "panel1"
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "label1"
-					"text": "<Expenses PieChart>"
+				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+					name: "scrollPane3"
+					add( new FormComponent( "javax.swing.JTable" ) {
+						name: "expensesTable"
+						"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+							} )
+						}, new java.util.Vector {
+							add( "Tag" )
+							add( "Percentage" )
+							add( "Total" )
+						}, new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+						}, new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+						}, new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+						} )
+						"enabled": false
+					} )
 				} )
 				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 					name: "scrollPane1"
@@ -84,8 +115,10 @@ new FormModel {
 							add( null )
 							add( null )
 							add( null )
+							add( null )
 						} )
 						add( new java.util.Vector {
+							add( null )
 							add( null )
 							add( null )
 							add( null )
@@ -98,19 +131,23 @@ new FormModel {
 						add( "Source" )
 						add( "Destination" )
 						add( "Tag" )
+						add( "Date" )
 					}, new java.util.Vector {
 						add( null )
 						add( null )
 						add( null )
 						add( null )
 						add( null )
-					}, new java.util.Vector {
-						add( null )
-						add( null )
-						add( null )
-						add( null )
 						add( null )
 					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( null )
 						add( null )
 						add( null )
 						add( null )

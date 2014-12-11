@@ -6,6 +6,7 @@ package gui;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.text.ParseException;
 
 import javax.swing.*;
 
@@ -302,8 +303,14 @@ public class MainGUI extends JFrame implements ActionListener {
 			
 			if (transactionPanel1.ValidateInfo(CurrentUser.id, userList, moneyInfo)) {
 				int userID = CurrentUser.id;
-				moneyInfo.CreateTransaction(userID, transactionPanel1.RetrieveTransaction(moneyInfo.getTransactions().getTransactionsCount(), userID, moneyInfo));
+				try {
+					moneyInfo.CreateTransaction(userID, transactionPanel1.RetrieveTransaction(moneyInfo.getTransactions().getTransactionsCount(), userID, moneyInfo));
+				} catch (NumberFormatException | ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				dashboardPanel1.SetInfo(moneyInfo, userID);
+				reportsPanel1.SetInfo(moneyInfo, userID);
 				DashboardButtonPressed(null);
 			}
 		}
@@ -312,6 +319,7 @@ public class MainGUI extends JFrame implements ActionListener {
 				int userID = CurrentUser.id;
 				moneyInfo.UpdateOrCreateAccount(userID, settingsPanel1.GetAccountName(), settingsPanel1.getAccountBalance());
 				dashboardPanel1.SetInfo(moneyInfo, userID);
+				reportsPanel1.SetInfo(moneyInfo, userID);
 				DashboardButtonPressed(null);
 			}
 		}
@@ -320,6 +328,7 @@ public class MainGUI extends JFrame implements ActionListener {
 	private void SignUserIn(int userID) {
 		CurrentUser = userList.userList.get(userID);
 		dashboardPanel1.SetInfo(moneyInfo, userID);
+		reportsPanel1.SetInfo(moneyInfo, userID);
 	}
 
 	private void SignUserOut() {

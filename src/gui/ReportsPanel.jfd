@@ -15,63 +15,149 @@ new FormModel {
 			"preferredSize": new java.awt.Dimension( 654, 532 )
 			"maximumSize": new java.awt.Dimension( 654, 532 )
 			"minimumSize": new java.awt.Dimension( 654, 532 )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label1"
-				"text": "<Expenses chart this month>"
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane3"
+				add( new FormComponent( "javax.swing.JTable" ) {
+					name: "expensesTableMonth"
+					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+						} )
+					}, new java.util.Vector {
+						add( "Tag" )
+						add( "Percentage" )
+						add( "Total" )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+					} )
+					"enabled": false
+				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label2"
-				"text": "<Expenses chart this year>"
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane4"
+				add( new FormComponent( "javax.swing.JTable" ) {
+					name: "expensesTableAll"
+					"enabled": false
+					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+						} )
+					}, new java.util.Vector {
+						add( "Tag" )
+						add( "Percentage" )
+						add( "Total" )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+					} )
+				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 				"gridx": 1
 			} )
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane1"
 				add( new FormComponent( "javax.swing.JTable" ) {
-					name: "table1"
-					"model": &SwingTableModel0 new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+					name: "transTableMonth"
+					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
 						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( "" )
+							add( "" )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
 							add( null )
 							add( null )
 						} )
 						add( new java.util.Vector {
 							add( null )
 							add( null )
-						} )
-						add( new java.util.Vector {
 							add( null )
 							add( null )
 						} )
 						add( new java.util.Vector {
 							add( null )
 							add( null )
-						} )
-						add( new java.util.Vector {
 							add( null )
 							add( null )
 						} )
 						add( new java.util.Vector {
 							add( null )
 							add( null )
-						} )
-						add( new java.util.Vector {
 							add( null )
 							add( null )
 						} )
 						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
 							add( null )
 							add( null )
 						} )
 					}, new java.util.Vector {
-						add( "Tag" )
+						add( "Type" )
 						add( "Amount" )
+						add( "Tag" )
+						add( "Date" )
 					}, new java.util.Vector {
 						add( null )
 						add( null )
-					}, new java.util.Vector {
 						add( null )
 						add( null )
 					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
 						add( null )
 						add( null )
 					} )
@@ -82,8 +168,77 @@ new FormModel {
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane2"
 				add( new FormComponent( "javax.swing.JTable" ) {
-					name: "table2"
-					"model": #SwingTableModel0
+					name: "transTableYear"
+					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						} )
+					}, new java.util.Vector {
+						add( "Type" )
+						add( "Amount" )
+						add( "Tag" )
+						add( "Date" )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					} )
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 				"gridx": 1

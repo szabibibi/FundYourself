@@ -7,6 +7,8 @@ import java.text.ParseException;
 
 import javax.swing.*;
 
+import com.jtattoo.plaf.JTattooUtilities;
+
 import functionality.MoneyInfo;
 import functionality.User;
 import functionality.UserList;
@@ -15,7 +17,7 @@ import functionality.UserList;
  * @author Szabolcs Orban
  */
 public class MainGUI extends JFrame implements ActionListener {
-	public MainGUI() {
+	public MainGUI() throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
 		getContentPane().setPreferredSize(new Dimension(1024, 768));
 		initComponents();
 		setVisible(true);
@@ -27,11 +29,11 @@ public class MainGUI extends JFrame implements ActionListener {
 	private MoneyInfo moneyInfo = new MoneyInfo();
 	private UserList userList = new UserList();
 	
-	private LogInPanel pnlLogIn = new LogInPanel(this);
-	private LoggedInPanel pnlLogOut = new LoggedInPanel(this);
-	private AccountsPanel pnlAccounts = new AccountsPanel(this);
-	private DashboardPanelNew pnlDashboardPanel = new DashboardPanelNew(this);
-	private TransactionPanelNew pnlTransaction = new TransactionPanelNew(this);
+	private LogInPanel pnlLogIn;
+	private LoggedInPanel pnlLogOut;
+	private AccountsPanel pnlAccounts;
+	private DashboardPanelNew pnlDashboardPanel;
+	private TransactionPanelNew pnlTransaction;
 	
 	private JPanel tabDashboard;
 	private JPanel tabTransactions;
@@ -42,7 +44,14 @@ public class MainGUI extends JFrame implements ActionListener {
 	private JPanel pnlCurrent;
 	private JTabbedPane tabbedPane;
 
-	private void initComponents() {
+	private void initComponents() throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
+
+		UIManager.setLookAndFeel("com.jtattoo.plaf.hifi.HiFiLookAndFeel");
+		pnlLogIn = new LogInPanel(this);
+		pnlLogOut = new LoggedInPanel(this);
+		pnlAccounts = new AccountsPanel(this);
+		pnlDashboardPanel = new DashboardPanelNew(this);
+		pnlTransaction = new TransactionPanelNew(this);
 
 		//======== this ========
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

@@ -48,5 +48,9 @@ public class AccountList {
 		accountList.get(userID).add(new Account(accountsCount, accountName, accountBalance, userID));
 		accountsCount++;
 	}
+
+	public void CreateNewUser(int userID) {
+		accountList.put(userID, new ArrayList<Account>());
+	}
 	
 }

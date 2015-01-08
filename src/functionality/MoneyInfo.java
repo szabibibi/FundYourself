@@ -239,5 +239,15 @@ public class MoneyInfo {
 		}
 		return expenses;
 	}
+
+	public void CreateNewUser(int userID) {
+		accountList.CreateNewUser(userID);
+		transactions.CreateNewUser(userID);
+	}
+
+	public void RemoveAccount(int userID, int accID) {
+		//TODO
+		return;
+	}
 	
 }

@@ -80,7 +80,6 @@ public class TransactionList {
 	}
 
 	public void AddTransaction(int userID, Transaction trans) {
-		// TODO Auto-generated method stub
 		transactions.get(userID).add(trans);
 		transactionsCount += 1;
 	}
@@ -99,6 +98,10 @@ public class TransactionList {
 			}
 		}
 		return trans;
+	}
+
+	public void CreateNewUser(int userID) {
+		transactions.put(userID,  new ArrayList<Transaction>());
 	}
 
 }

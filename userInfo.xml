@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <UserInfo>
   <accounts>
-    <account id="0" name="BCR" balance="3239.0" userID="0" />
-    <account id="1" name="Pocket" balance="20.0" userID="0" />
-    <account id="2" name="KluKlux" balance="4001.0" userID="0" />
-    <account id="3" name="asd" balance="566.0" userID="2" />
+    <account id="0" name="BCR" balance="2904.0" userID="0" />
+    <account id="1" name="Pocket" balance="585.0" userID="0" />
+    <account id="2" name="KluKlux" balance="3951.0" userID="0" />
   </accounts>
   <transactions>
-    <transaction id="0" userID="0" src="0" dst="-1" amount="200.0" tag="party" type="expense" date="11/11/2012" />
-    <transaction id="1" userID="0" src="1" dst="-1" amount="1200.0" tag="werk" type="income" date="11/11/2012" />
-    <transaction id="2" userID="0" src="0" dst="1" amount="1200.0" tag="" type="transfer" date="11/11/2012" />
-    <transaction id="3" userID="0" src="0" dst="-1" amount="5.0" tag="lala" type="expense" date="11/11/2012" />
-    <transaction id="4" userID="0" src="-1" dst="0" amount="5.0" tag="lala" type="income" date="11/11/2012" />
-    <transaction id="5" userID="0" src="0" dst="1" amount="0.0" tag="lala" type="transfer" date="11/11/2012" />
-    <transaction id="6" userID="0" src="0" dst="-1" amount="100.0" tag="yolo" type="expense" date="11/12/2014" />
-    <transaction id="7" userID="0" src="0" dst="-1" amount="200.0" tag="yolo" type="expense" date="11/12/2014" />
-    <transaction id="8" userID="0" src="0" dst="-1" amount="200.0" tag="yolo" type="expense" date="12/11/2014" />
-    <transaction id="9" userID="0" src="0" dst="-1" amount="200.0" tag="yolo" type="expense" date="10/11/2014" />
-    <transaction id="10" userID="0" src="0" dst="0" amount="58.0" tag="wag" type="expense" date="08/01/2015" />
-    <transaction id="11" userID="0" src="0" dst="0" amount="3.0" tag="asd" type="expense" date="08/01/2015" />
+    <transaction id="0" userID="0" src="1" dst="-1" amount="15.0" tag="Food" type="expense" date="09/01/2015" />
+    <transaction id="1" userID="0" src="0" dst="-1" amount="155.0" tag="Tobacco" type="expense" date="09/01/2015" />
+    <transaction id="2" userID="0" src="1" dst="-1" amount="500.0" tag="Rent" type="expense" date="09/01/2015" />
+    <transaction id="3" userID="0" src="-1" dst="1" amount="1000.0" tag="Salary" type="income" date="09/01/2015" />
+    <transaction id="4" userID="0" src="2" dst="-1" amount="50.0" tag="Vet" type="expense" date="09/01/2015" />
+    <transaction id="5" userID="0" src="1" dst="-1" amount="10.0" tag="Food" type="expense" date="09/01/2015" />
   </transactions>
+  <friends>
+    <friend source_id="0" target_id="1" />
+    <friend source_id="0" target_id="0" />
+    <friend source_id="1" target_id="0" />
+  </friends>
+  <suggestions>
+    <suggestion source_id="0" target_id="1" seen="true" date="09/01/2015">Eat more, drink less...</suggestion>
+    <suggestion source_id="0" target_id="1" seen="true" date="09/01/2015">Eat more, drink less...Eat more, drink less...Eat more, drink less...Eat more, drink less...Eat more, drink less...Eat more, drink less...Eat more, drink less...Eat more, drink less...Eat more, drink less...Eat more, drink less...Eat more, drink less...Eat more, drink less...Eat more, drink less...Eat more, drink less...Eat more, drink less...Eat more, drink less...Eat more, drink less...Eat more, drink less...Eat more, drink less...</suggestion>
+  </suggestions>
 </UserInfo>

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import org.jdom2.DataConversionException;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.input.SAXBuilder;
@@ -12,6 +13,7 @@ import org.jdom2.output.XMLOutputter;
 
 import functionality.Transaction.Type;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
@@ -36,20 +38,18 @@ public class MoneyInfo {
 		this.accountList = accountList;
 	}
 
-	public void ReadFromFile(UserList userList) {
+	public void ReadFromXML(Document document, UserList userList) {
 		CreateEmptyAccountList(userList.size());
-		
-		File f = new File("userInfo.xml");
-		if (!f.exists()) {
-			return;
-		}
-		SAXBuilder builder = new SAXBuilder();
+
 		try {
-			Document document = builder.build(f);
 			Element rootNode = document.getRootElement();
 			getAccountList().ReadFromXML(rootNode.getChild("accounts"));
 			getTransactions().ReadFromXML(rootNode.getChild("transactions"));
-		} catch (Exception e) {
+		} catch (DataConversionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -82,13 +82,9 @@ public class MoneyInfo {
 	public void CreateTransaction(int userID, Transaction trans) {
 		AddToTransactionList(userID, trans);
 		ModifyAccounts(userID, trans);
-		SerializeEverything();
 	}
 
-	private void SerializeEverything() {
-		Element root = new Element("UserInfo");
-		Document doc = new Document(root);
-		
+	public void SerializeEverything(Element root) {
 		Element accElem = new Element("accounts");
 		for (Entry<Integer, ArrayList<Account>> e : accountList.getAccountList().entrySet()) {
 			for (Account a : e.getValue()) {
@@ -104,14 +100,6 @@ public class MoneyInfo {
 			}
 		}
 		root.addContent(transElem);
-
-		try {
-        	XMLOutputter xmlop = new XMLOutputter(Format.getPrettyFormat());
-        	xmlop.output(doc, new FileOutputStream("userInfo.xml"));
-        } catch (IOException e) {
-        	e.printStackTrace();
-        }
-
 	}
 
 	private void ModifyAccounts(int userID, Transaction trans) {
@@ -160,7 +148,6 @@ public class MoneyInfo {
 		else {
 			UpdateAccount(a, accountBalance);
 		}
-		SerializeEverything();
 	}
 
 	private void UpdateAccount(Account a, double accountBalance) {

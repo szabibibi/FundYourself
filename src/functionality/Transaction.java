@@ -35,10 +35,14 @@ public class Transaction {
 		this.tag = tag;
 		this.date = date;
 		
-		if (type.equals("expense"))
+		if (type.equals("expense")) {
 			this.type = Type.Expense;
-		else if (type.equals("income"))
+			this.dstAcc = -1;
+		}
+		else if (type.equals("income")) {
 			this.type = Type.Income;
+			this.srcAcc = -1;
+		}
 		else if (type.equals("transfer"))
 			this.type = Type.Transfer;
 	}

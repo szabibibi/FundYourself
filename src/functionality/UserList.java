@@ -75,4 +75,16 @@ public class UserList {
 	public int size() {
 		return userList.size();
 	}
+
+	public String GetUserName(Integer userID) {
+		return userList.get(userID).name;
+	}
+
+	public int GetUserID(String userName) {
+		for (User u : userList) {
+			if (u.name.equals(userName))
+				return u.id;
+		}
+		return -1;
+	}
 }

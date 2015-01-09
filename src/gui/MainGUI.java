@@ -10,7 +10,9 @@ import javax.swing.*;
 import com.jtattoo.plaf.JTattooUtilities;
 
 import functionality.MoneyInfo;
+import functionality.Suggestion;
 import functionality.User;
+import functionality.UserInfo;
 import functionality.UserList;
 
 /**
@@ -22,18 +24,22 @@ public class MainGUI extends JFrame implements ActionListener {
 		initComponents();
 		setVisible(true);
 		userList.ReadFromFile("users.xml");
-		moneyInfo.ReadFromFile(userList);
+		userInfo.ReadFromFile(userList);
 	}
 
 	private User CurrentUser;
-	private MoneyInfo moneyInfo = new MoneyInfo();
 	private UserList userList = new UserList();
+	private UserInfo userInfo = new UserInfo();
+
 	
 	private LogInPanel pnlLogIn;
 	private LoggedInPanel pnlLogOut;
 	private AccountsPanel pnlAccounts;
 	private DashboardPanelNew pnlDashboardPanel;
 	private TransactionPanelNew pnlTransaction;
+	private FriendsPanel pnlFriends;
+	private ViewFriendPanel pnlViewFriendPanel;
+	private SuggestionsPanel pnlSuggestions;
 	
 	private JPanel tabDashboard;
 	private JPanel tabTransactions;
@@ -52,6 +58,9 @@ public class MainGUI extends JFrame implements ActionListener {
 		pnlAccounts = new AccountsPanel(this);
 		pnlDashboardPanel = new DashboardPanelNew(this);
 		pnlTransaction = new TransactionPanelNew(this);
+		pnlFriends = new FriendsPanel(this);
+		pnlViewFriendPanel = new ViewFriendPanel(this);
+		pnlSuggestions = new SuggestionsPanel(this);
 
 		//======== this ========
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -72,12 +81,13 @@ public class MainGUI extends JFrame implements ActionListener {
 		tabTransactions.add(pnlTransaction);
 		
 		tabSuggestions = new JPanel();
-		tabbedPane.addTab("Suggestions", null, tabSuggestions, null);
+		tabbedPane.addTab("Suggestions", null, new JScrollPane(pnlSuggestions), null);
 		tabbedPane.setEnabledAt(2, false);
 		
 		tabFriends = new JPanel();
 		tabbedPane.addTab("Friends", null, tabFriends, null);
 		tabbedPane.setEnabledAt(3, false);
+		tabFriends.add(pnlFriends);
 		
 		tabAccounts = new JPanel();
 		tabbedPane.addTab("Accounts", null, tabAccounts, null);
@@ -116,7 +126,7 @@ public class MainGUI extends JFrame implements ActionListener {
 		EnableTabs();
 		tabbedPane.setSelectedIndex(0);
 		
-		if (moneyInfo.getAccountList().getAccountList().get(userID).size() == 0) {
+		if (userInfo.moneyInfo.getAccountList().getAccountList().get(userID).size() == 0) {
 			tabbedPane.setEnabledAt(1, false);
 			tabbedPane.setSelectedIndex(4);
 		}
@@ -143,7 +153,6 @@ public class MainGUI extends JFrame implements ActionListener {
 	}
 
 	private void ClearPanels() {
-		moneyInfo.Clear();
 		pnlDashboardPanel.ClearInfo();
 	}
 
@@ -173,19 +182,21 @@ public class MainGUI extends JFrame implements ActionListener {
 
 	public void RegisterButtonPressed(String username, char[] password) {
 		userList.CreateUser(username, new String(password));
-		moneyInfo.CreateNewUser(userList.size() - 1);
+		userInfo.CreateNewUser(userList.size() - 1);
 		SignUserIn(userList.size() - 1);
 	}
 
 	public void RemoveAccountPressed(int i) {
-		moneyInfo.RemoveAccount(CurrentUser.id, i);
+		userInfo.RemoveAccount(CurrentUser.id, i);
 		UpdatePanels();
 	}
 
 	private void UpdatePanels() {
-		pnlDashboardPanel.SetInfo(moneyInfo, CurrentUser.id);
-		pnlAccounts.SetInfo(moneyInfo, CurrentUser.id);
-		pnlTransaction.SetInfo(moneyInfo, CurrentUser.id);
+		pnlDashboardPanel.SetInfo(userInfo.moneyInfo, CurrentUser.id);
+		pnlAccounts.SetInfo(userInfo.moneyInfo, CurrentUser.id);
+		pnlTransaction.SetInfo(userInfo.moneyInfo, CurrentUser.id);
+		pnlFriends.SetInfo(userList, userInfo.friendsInfo, CurrentUser.id);
+		pnlSuggestions.SetInfo(userList, userInfo.suggestionInfo, CurrentUser.id);
 		
 		pack();
 		validate();
@@ -193,7 +204,7 @@ public class MainGUI extends JFrame implements ActionListener {
 	}
 
 	public void CreateNewAccount(String accName, double accBalance) {
-		moneyInfo.UpdateOrCreateAccount(CurrentUser.id, accName, accBalance);
+		userInfo.UpdateOrCreateAccount(CurrentUser.id, accName, accBalance);
 		
 		tabbedPane.setEnabledAt(1, true);
 		
@@ -201,17 +212,17 @@ public class MainGUI extends JFrame implements ActionListener {
 	}
 
 	public boolean AccountExists(String accName) {
-		return moneyInfo.HasAccount(CurrentUser.id, accName);
+		return userInfo.moneyInfo.HasAccount(CurrentUser.id, accName);
 	}
 
 	public void NewTransactionButtonPressed() {
 		if (CurrentUser == null)
 			return;
 		
-		if (pnlTransaction.ValidateInfo(CurrentUser.id, userList, moneyInfo)) {
+		if (pnlTransaction.ValidateInfo(CurrentUser.id, userList, userInfo.moneyInfo)) {
 			int userID = CurrentUser.id;
 			try {
-				moneyInfo.CreateTransaction(userID, pnlTransaction.RetrieveTransaction(moneyInfo.getTransactions().getTransactionsCount(), userID, moneyInfo));
+				userInfo.CreateTransaction(userID, pnlTransaction.RetrieveTransaction(userInfo.moneyInfo.getTransactions().getTransactionsCount(), userID, userInfo.moneyInfo));
 			} catch (NumberFormatException | ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -225,5 +236,52 @@ public class MainGUI extends JFrame implements ActionListener {
 		else {
 			UIManager.getLookAndFeel().provideErrorFeedback(pnlTransaction.btnAddTransaction);
 		}
+	}
+
+
+	public void AddNewFriend(String name) {
+		userInfo.AddFriend(CurrentUser.id, userList.GetUserID(name));
+		UpdatePanels();
+	}
+
+
+	public void VisitButtonPressed(String userName) {
+		pnlViewFriendPanel.SetInfo(userInfo.moneyInfo, userList.GetUserID(userName));
+		
+		tabbedPane.setComponentAt(3, new JScrollPane(pnlViewFriendPanel));
+		//tabFriends.remove(0);
+		//tabFriends.add(pnlViewFriendPanel);
+		
+		pack();
+		validate();
+		repaint();
+	}
+
+
+	public void BackToFriendsPressed() {
+//		tabFriends.remove(0);
+//		tabFriends.add(pnlFriends);
+		tabbedPane.setComponentAt(3, tabFriends);
+		pack();
+		validate();
+		repaint();
+	}
+
+
+	public void AddNewSuggestion(int friendID, String text) {
+		userInfo.AddSuggestion(friendID, CurrentUser.id, text);
+		UpdatePanels();
+	}
+
+
+	public void MarkSuggestionAsRead(Suggestion suggestion) {
+		userInfo.MarkSuggestionAsRead(CurrentUser.id, suggestion);
+		UpdatePanels();
+	}
+
+
+	public void MarkAllSuggestionsAsRead() {
+		userInfo.MarkAllSuggestionsAsRead(CurrentUser.id);
+		UpdatePanels();
 	}
 }

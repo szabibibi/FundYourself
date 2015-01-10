@@ -59,8 +59,8 @@ public class AddSuggestionWindow extends JFrame {
 		txtSuggestion = new JTextArea();
 		txtSuggestion.setLineWrap(true);
 		txtSuggestion.setWrapStyleWord(true);
-		txtSuggestion.setColumns(50);
-		txtSuggestion.setRows(6);
+		txtSuggestion.setColumns(40);
+		txtSuggestion.setRows(5);
 		panel.add(new JScrollPane(txtSuggestion));
 		
 		

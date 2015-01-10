@@ -20,6 +20,8 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import javax.swing.UIManager;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
 
 public class LogInPanel extends JPanel implements ActionListener {
 	private MainGUI mainGUI;
@@ -37,6 +39,7 @@ public class LogInPanel extends JPanel implements ActionListener {
 	 * @param mainGUI 
 	 */
 	public LogInPanel(MainGUI mainGUI) {
+		setFocusCycleRoot(true);
 		this.mainGUI = mainGUI;
 		setLayout(new FormLayout(new ColumnSpec[] {
 				FormFactory.RELATED_GAP_COLSPEC,
@@ -115,6 +118,7 @@ public class LogInPanel extends JPanel implements ActionListener {
 		
 		btnLogIn.addActionListener(this);
 		btnCreateNewUser.addActionListener(this);
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtUserLogin, txtPassLogin, btnLogIn, txtUserRegister, txtPassRegister, txtConfirmPass, btnCreateNewUser}));
 
 	}
 	

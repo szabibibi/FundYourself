@@ -20,6 +20,8 @@ import java.awt.Component;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -182,6 +184,14 @@ public class DashboardPanelNew extends JPanel {
 	private void SetTransactionInfo(MoneyInfo moneyInfo, int userID) {
 		ArrayList<Account> accList = moneyInfo.getAccountList().getAccountList().get(userID);
 		ArrayList<Transaction> transList = moneyInfo.getTransactions().GetTransactionsThisMonth(userID);
+		Collections.sort(transList, new Comparator<Transaction>() {
+
+			@Override
+			public int compare(Transaction arg0, Transaction arg1) {
+				return arg1.date.compareTo(arg0.date);
+			}
+			
+		});
 		
 		String[] transColumnNames = {"Type", "Source", "Destination", "Amount", "Tag", "Date"};
 		tblTransactions.setModel(new DefaultTableModel(transColumnNames, transList.size()));
@@ -246,6 +256,15 @@ public class DashboardPanelNew extends JPanel {
 	private void SetTransactionInfoAllTime(MoneyInfo moneyInfo, int userID) {
 		ArrayList<Account> accList = moneyInfo.getAccountList().getAccountList().get(userID);
 		ArrayList<Transaction> transList = moneyInfo.getTransactions().getTransactions().get(userID);
+		Collections.sort(transList, new Comparator<Transaction>() {
+
+			@Override
+			public int compare(Transaction arg0, Transaction arg1) {
+				return arg1.date.compareTo(arg0.date);
+			}
+			
+		});
+
 		
 		String[] transColumnNames = {"Type", "Source", "Destination", "Amount", "Tag", "Date"};
 		tblTransactionsAllTime.setModel(new DefaultTableModel(transColumnNames, transList.size()));

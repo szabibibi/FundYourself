@@ -71,6 +71,7 @@ public class TransactionPanelNew extends JPanel implements ItemListener, ActionL
 		add(lblDate, "cell 2 4");
 		
 		txtDate = new JTextField();
+		txtDate.setText("dd/MM/yyyy");
 		add(txtDate, "cell 4 4,growx");
 		txtDate.setColumns(10);
 		
@@ -124,6 +125,9 @@ public class TransactionPanelNew extends JPanel implements ItemListener, ActionL
 		
 		try {
 			Double.parseDouble(txtAmount.getText());
+			if (!txtDate.getText().isEmpty()) {
+				Date date = (new SimpleDateFormat("dd/MM/yyyy")).parse(txtDate.getText());
+			}
 		} catch (Exception e) {
 			return false;
 		}
@@ -136,7 +140,7 @@ public class TransactionPanelNew extends JPanel implements ItemListener, ActionL
 		type = type.toLowerCase();
 		
 		String date = "";
-		if (txtDate.getText().equals("")) {
+		if (txtDate.getText().equals("") || txtDate.getText().equals("dd/MM/yyyy")) {
 			date = (new SimpleDateFormat("dd/MM/yyyy")).format(new Date());
 		} else {
 			date = txtDate.getText();

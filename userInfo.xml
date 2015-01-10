@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <UserInfo>
   <accounts>
-    <account id="0" name="BCR" balance="2904.0" userID="0" />
-    <account id="1" name="Pocket" balance="585.0" userID="0" />
+    <account id="0" name="BCR" balance="2844.0" userID="0" />
+    <account id="1" name="Pocket" balance="565.0" userID="0" />
     <account id="2" name="KluKlux" balance="3951.0" userID="0" />
+    <account id="3" name="yolo" balance="400.0" userID="0" />
   </accounts>
   <transactions>
     <transaction id="0" userID="0" src="1" dst="-1" amount="15.0" tag="Food" type="expense" date="09/01/2015" />
@@ -12,6 +13,9 @@
     <transaction id="3" userID="0" src="-1" dst="1" amount="1000.0" tag="Salary" type="income" date="09/01/2015" />
     <transaction id="4" userID="0" src="2" dst="-1" amount="50.0" tag="Vet" type="expense" date="09/01/2015" />
     <transaction id="5" userID="0" src="1" dst="-1" amount="10.0" tag="Food" type="expense" date="09/01/2015" />
+    <transaction id="6" userID="0" src="1" dst="-1" amount="20.0" tag="Travel" type="expense" date="10/01/2015" />
+    <transaction id="7" userID="0" src="0" dst="-1" amount="40.0" tag="Food" type="expense" date="10/01/2015" />
+    <transaction id="8" userID="0" src="0" dst="-1" amount="20.0" tag="Food" type="expense" date="08/01/2015" />
   </transactions>
   <friends>
     <friend source_id="0" target_id="1" />
@@ -19,6 +23,7 @@
     <friend source_id="1" target_id="0" />
   </friends>
   <suggestions>
+    <suggestion source_id="0" target_id="0" seen="true" date="10/01/2015">Dude, trenu-i scump...</suggestion>
     <suggestion source_id="0" target_id="1" seen="true" date="09/01/2015">Eat more, drink less...</suggestion>
     <suggestion source_id="0" target_id="1" seen="true" date="09/01/2015">Eat more, drink less...Eat more, drink less...Eat more, drink less...Eat more, drink less...Eat more, drink less...Eat more, drink less...Eat more, drink less...Eat more, drink less...Eat more, drink less...Eat more, drink less...Eat more, drink less...Eat more, drink less...Eat more, drink less...Eat more, drink less...Eat more, drink less...Eat more, drink less...Eat more, drink less...Eat more, drink less...Eat more, drink less...</suggestion>
   </suggestions>

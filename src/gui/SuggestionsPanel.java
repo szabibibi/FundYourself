@@ -111,7 +111,7 @@ public class SuggestionsPanel extends JPanel implements ActionListener {
 		Collections.sort(suggestions, new Comparator<Suggestion>() {
 			@Override
 			public int compare(Suggestion o1, Suggestion o2) {
-				return o1.date.compareTo(o2.date);
+				return o2.date.compareTo(o1.date);
 			}
 		});
 		
